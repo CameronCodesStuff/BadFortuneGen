@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Fortune Generator</title>
+    <style>
+        @keyframes backgroundMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes textFade {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(45deg, #333, #111);
+            background-size: 200% 200%;
+            animation: backgroundMove 5s linear infinite alternate;
+            color: white;
+            overflow: hidden;
+        }
+        #fortune {
+            margin-top: 20px;
+            font-size: 1.5em;
+            animation: fadeInOut 2s ease-in-out;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        .signature {
+            font-size: 0.7em;
+            opacity: 0;
+            animation: textFade 3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bad Fortune Generator</h1>
+    <p class="signature">CameronCodesStuff</p>
+    <button onclick="generateFortune()">Get Your Bad Fortune</button>
+    <p id="fortune"></p>
+
+    <script>
+        const badFortunes = [
+            "Spill coffee on your shirt.", "Step in gum.", "Get stuck in traffic.", "Miss your alarm and wake up late.",
+            "Lose your keys.", "Forget your phone at home.", "Trip over your own feet.", "Bite your tongue while eating.",
+            "Paper cut.", "Phone battery dies at the worst moment.", "Stub your toe.", "Run out of toilet paper.",
+            "Get rained on without an umbrella.", "Someone takes the last snack you wanted.", "Shoe laces keep coming untied.",
+            "Get a splinter.", "Glasses keep slipping down your nose.", "Drop your food.", "Slow Wi-Fi.",
+            "Forget an important meeting.", "Socks get wet.", "Get caught in a long checkout line.", "Misplace your wallet.",
+            "Accidentally send a text to the wrong person.", "Elevator takes forever.", "Get locked out of your house.",
+            "Miss the bus/train.", "TV remote batteries die.", "Drink spills on your laptop.", "Someone parks too close to your car.",
+            "Step in a puddle with your new shoes.", "Itchy mosquito bite.", "Someone eats your leftovers.", "Favorite store is closed.",
+            "Burn your tongue on hot food.", "Hair gets frizzy from humidity.", "Drop your phone face-down.", "Someone cuts in front of you in line.",
+            "Forget an important password.", "Smudge ink on your hands.", "Scratch your sunglasses.", "Spill water on important documents.",
+            "GPS takes you to the wrong place.", "Run out of gas.", "Ice cream melts too fast.", "ATM runs out of cash.",
+            "Alarm goes off too soon.", "Printer runs out of ink.", "Lose a bet.", "Can’t find a parking spot.",
+            "Car won’t start.", "Get caught in a surprise downpour.", "Laptop crashes before saving work.", "Have to redo hours of work.",
+            "Dog eats something it shouldn’t.", "Unexpected expense drains your budget.", "Oversleep and miss an important event.",
+            "Debit card gets declined.", "Phone falls in water.", "Run out of hot water in the shower.", "Someone spoils a show/movie for you.",
+            "Step on a Lego barefoot.", "Get ghosted by someone.", "Drop an entire meal on the floor.", "Car gets towed.",
+            "Friend cancels plans last minute.", "Internet goes out during an important task.", "Argument with a friend.",
+            "Get caught in a social media controversy.", "Get a parking ticket.", "Credit card gets hacked.", "Laptop charger breaks.",
+            "Favorite restaurant changes the menu.", "Phone screen cracks.", "Forget a friend’s birthday.", "Lose a small but valuable item.",
+            "Flight gets delayed or canceled.", "Haircut goes wrong.", "Miss a deadline at work or school.", "Get stood up.",
+            "Favorite TV show gets canceled.", "Lose an important document.", "Drop your groceries.", "ATM eats your card.",
+            "Package gets lost in the mail.", "Slip on ice.", "Favorite website goes down.", "Dent your car.",
+            "Forget to bring an important item.", "Get an unexpected bill.", "Neighbor blasts loud music all night.", "Phone charger stops working.",
+            "Get locked out of your car.", "Break your glasses.", "Get catfished.", "Burn your food.", "Drink expired milk.", "Car battery dies.",
+            "Get stuck in an elevator.", "Get fired from your job.", "Car accident.", "Lose your phone permanently.", "House gets broken into.",
+            "Wallet gets stolen.", "Get food poisoning.", "Boss yells at you.", "Major appliance breaks down.", "Laptop gets stolen.", "Break a bone.",
+            "Pet runs away.", "Get scammed online.", "Major power outage.", "Get stranded in the middle of nowhere.", "Car gets stolen.",
+            "House catches on fire.", "Bank account gets frozen.", "Medical emergency.", "Lose your passport while traveling.",
+            "Identity theft.", "Lose all sense of time and space.", "Supervillain attacks your city.", "Reality glitches, and you see beyond existence."
+        ];
+        
+        function generateFortune() {
+            const randomIndex = Math.floor(Math.random() * badFortunes.length);
+            const fortuneText = document.getElementById("fortune");
+            fortuneText.textContent = badFortunes[randomIndex];
+            fortuneText.style.animation = 'none';
+            setTimeout(() => fortuneText.style.animation = 'fadeInOut 2s ease-in-out', 10);
+        }
+    </script>
+</body>
+</html>
